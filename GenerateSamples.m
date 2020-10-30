@@ -12,5 +12,9 @@ function sample_seq = GenerateSamples(bit_seq,fs)
 sample_seq = zeros(size(bit_seq*fs));
 
 %%% WRITE YOUR CODE FOR PART 2 HERE
-
+for i = 1 : length(bit_seq)
+  for j = 1 : fs
+    sample_seq((i - 1) * fs + j) = bit_seq(i);
+  end
+end
 %%%

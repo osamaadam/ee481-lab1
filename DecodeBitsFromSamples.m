@@ -23,7 +23,19 @@ switch case_type
         %%%
     case 'part_2'
         %%% WRITE YOUR CODE FOR PART 2 HERE
-        
+        numberOfOnes = 0;
+        for i = 1 : length(rec_sample_seq)
+          if (rec_sample_seq(i) == 1)
+            numberOfOnes++;
+          end
+          if (mod(i, fs) == 0)
+            if (numberOfOnes >= fs / 2)
+              rec_bit_seq(i / fs) = 1;
+            else
+              rec_bit_seq(i / fs) = 0;
+            end
+          end
+        end
         %%%
     case 'part_3'
         %%% WRITE YOUR CODE FOR PART 3 HERE

@@ -39,6 +39,11 @@ for p_ind = 1:length(p_vect)
     rec_bit_seq = DecodeBitsFromSamples(rec_sample_seq,'part_1');
     BER_case_1_vec(p_ind) = ComputeBER(bit_seq,rec_bit_seq);
 end
+figure
+plot(p_vect, BER_case_1_vec)
+title("BER Against P")
+ylabel("BER")
+xlabel("P")
 %%%
 
 %% Part 2: BER for simple bit-flipping channel with multiple samples
@@ -74,6 +79,11 @@ for p_ind = 1:length(p_vect)
     rec_bit_seq = DecodeBitsFromSamples(rec_sample_seq,'part_2',fs);
     BER_case_2_vec(p_ind) = ComputeBER(bit_seq,rec_bit_seq);
 end
+figure
+plot(p_vect, BER_case_2_vec)
+title("BER Against P")
+ylabel("BER")
+xlabel("P")
 %%%
 
 %% Part 3: BER for simple bit-flipping channel with multiple samples and correlated channel

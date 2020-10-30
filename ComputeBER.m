@@ -11,7 +11,8 @@ function BER = ComputeBER(bit_seq,rec_bit_seq)
 
 %%% WRITE YOUR CODE HERE
 incorrectBits = 0;
-for i = 1:length(bit_seq)
+length(bit_seq)
+for i = 1 : length(bit_seq)
   if (bit_seq(i) != rec_bit_seq(i))
     incorrectBits++;
   end
