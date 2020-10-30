@@ -116,6 +116,11 @@ for p_ind = 1:length(p_vect)
     rec_bit_seq = DecodeBitsFromSamples(rec_sample_seq,'part_3',fs);
     BER_case_3_vec(p_ind) = ComputeBER(bit_seq,rec_bit_seq);
 end
+figure
+plot(p_vect, BER_case_3_vec)
+title("BER Against P")
+ylabel("BER")
+xlabel("P")
 %%%
 
 % Plotting results
@@ -136,3 +141,32 @@ legend('Part 1-a','Part 2-a','Part 3-a','fontsize',10)
 
 
 %%% WRITE YOUR CODE HERE
+fs_vect  = 0:5:30;    % Number of samples per symbol (bit)
+BER_case_4_vect = zeros(size(fs_vect));
+p = 0.2;
+
+for i = 1 : length(fs_vect)
+  if(fs_vect(i))
+    disp(fs_vect(i))
+    % Generate a bit sequence
+    bit_seq = GenerateBits(N_bits);
+    
+    % Generate samples from bits
+    sample_seq = GenerateSamples(bit_seq, fs_vect(i));
+
+    % Pass the sample sequence through the channel
+    rec_sample_seq = BSC(sample_seq, fs_vect(i), p);   
+    
+    % Decode bits from received bit sequence
+    rec_bit_seq = DecodeBitsFromSamples(rec_sample_seq, 'part_2', fs_vect(i));
+    
+    % Compute the BER
+    BER_case_4_vect(i) = ComputeBER(bit_seq, rec_bit_seq);
+  end
+end
+
+figure
+plot(fs_vect, BER_case_4_vect)
+title("BER Against FS")
+ylabel("BER")
+xlabel("FS")

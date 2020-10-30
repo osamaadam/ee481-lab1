@@ -34,11 +34,14 @@ switch case_type
             else
               rec_bit_seq(i / fs) = 0;
             end
+            numberOfOnes = 0;
           end
         end
         %%%
     case 'part_3'
         %%% WRITE YOUR CODE FOR PART 3 HERE
-        
+        for i = fs : fs : length(rec_sample_seq)
+          rec_bit_seq(i / fs) = rec_sample_seq(i);
+        end
         %%%
 end
